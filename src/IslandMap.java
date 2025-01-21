@@ -5,18 +5,18 @@ import java.util.Random;
 */
 
 public class IslandMap {
-    int[][] map;
-    int[] treasureCoordinates = {0,0};
+    private int[][] map;
+    private int[] treasureCoordinates = {0,0};
 
-    int sizeX;
-    int sizeY;
+    private int sizeX;
+    private int sizeY;
 
     IslandMap(int x, int y) {
         sizeX = x;
         sizeY = y;
 
         map = new int[y][];
-        for (int i = 0; i < y;i++) {
+        for (int i = 0; i < y; i++) {
             map[i] = new int[x];
         }
         generateTreasure();
@@ -37,11 +37,19 @@ public class IslandMap {
             return false;
     }
 
+    public void dig(int y, int x) {
+        map[y][x] = 1;
+    }
+
     public int getSizeMapY() {
         return (map.length);
     }
 
     public int getSizeMapX() {
         return (map[0].length);
+    }
+
+    public boolean isDigged(int i, int j) {
+        return map[i][j] == 1;
     }
 }
