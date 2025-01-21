@@ -8,8 +8,8 @@ public class IslandMap {
     private int[][] map;
     private int[] treasureCoordinates = {0,0};
 
-    private int sizeX;
-    private int sizeY;
+    private final int sizeX;
+    private final int sizeY;
 
     IslandMap(int x, int y) {
         sizeX = x;
@@ -51,5 +51,13 @@ public class IslandMap {
 
     public boolean isDigged(int i, int j) {
         return map[i][j] == 1;
+    }
+
+    public void clean() {
+        map = new int[sizeY][];
+        for (int i = 0; i < sizeY; i++) {
+            map[i] = new int[sizeX];
+        }
+        generateTreasure();
     }
 }

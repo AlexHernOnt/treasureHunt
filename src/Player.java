@@ -6,6 +6,8 @@ public class Player {
     int posX;
     int posY;
     IslandMap map;
+    static int movesPerWin[];
+
 
     Player(IslandMap map) {
         posX = 0;
@@ -43,5 +45,20 @@ public class Player {
     public void moveEast() {
         if (posX< map.getSizeMapX() - 1)
             posX++;
+    }
+
+    public void recordMoves(int moves) {
+        int[] aux = new int[movesPerWin.length + 1];
+
+            for (int i = 0; i < movesPerWin.length; ++i) {
+                aux[i] = movesPerWin[i];
+            }
+            aux[movesPerWin.length] = moves;
+            movesPerWin = aux;
+    }
+
+    public static int getCUrrentSteps()
+    {
+        return movesPerWin[movesPerWin.length];
     }
 }

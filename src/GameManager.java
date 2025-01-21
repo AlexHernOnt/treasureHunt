@@ -10,6 +10,8 @@ public class GameManager {
     private Player player;
     private tmlPrint tml;
 
+    private int counter;
+
     GameManager(IslandMap map) {
         this.map = map;
         player = new Player(map);
@@ -18,10 +20,12 @@ public class GameManager {
         startUI();
     }
 
+    // Welcome screen with option of exti
     private void startUI() {
         String strRead;
 
         tml.cleanScreen();
+        map.clean();
         System.out.println("Welcome to the island, do you want to start the game?\nStart\nExit\n");
         strRead = scanner.nextLine();
 
@@ -36,6 +40,7 @@ public class GameManager {
         }
     }
 
+    // ask to the player to move to a position or dig
     private void move() {
         String strRead;
 
@@ -66,22 +71,34 @@ public class GameManager {
 
     }
 
+
+    // check if the position of the player is the same as the treasure
     private void dig() {
         String strRead;
+        boolean won;
 
+        counter++;
         tml.cleanScreen();
         if (map.isTreasureHere(player.getPosY(), player.getPosX())) {
-            System.out.println("You found the treasure, you are rich! Goodbye!");
+            System.out.println("You found the treasure, you are rich! Next treasure awaits! \n- Ok");
+            won = true;
         } else {
             map.dig(player.getPosY(), player.getPosX());
             System.out.println("Nothing here, keep going! \n- Ok");
-            strRead = scanner.nextLine();
-            if (strRead.equalsIgnoreCase("ok")) {
-                move();
-            } else {
-                System.out.println("Invalid input: \n'Start'\n'Exit'.");
-                dig();
-            }
+            won = false;
         }
+
+        strRead = scanner.nextLine();
+        if (strRead.equalsIgnoreCase("ok")) {
+            if (won) {
+                counter = 0;
+                startUI();
+            } else
+                move();
+        } else {
+            System.out.println("Invalid input: \n'Start'\n'Exit'.");
+            dig();
+        }
+
     }
 }
