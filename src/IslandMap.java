@@ -28,4 +28,12 @@ public class IslandMap {
         treasureCoordinates[0] = rand.nextInt(sizeX);
         treasureCoordinates[1] = rand.nextInt(sizeY);
     }
+
+    public int getSizeMapY() {
+        return (map.length);
+    }
+
+    public int getSizeMapX() {
+        return (map[0].length);
+    }
 }
