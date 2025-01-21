@@ -2,7 +2,7 @@
 Find the treasure in the Whitebeard's pirate Island!
 
 
-## 🏴‍☠️Features 🏴‍☠️ ## 
+## Features  ## 
 
 There is a map where you can move around the map and dig in the ground.
 You receive and send messages to the program, interacting with it.
