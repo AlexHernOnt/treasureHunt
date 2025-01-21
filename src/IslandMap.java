@@ -1,8 +1,8 @@
 import java.util.Random;
 
-/**
- * This class handles the map with a 2D array, with a treausre in a coordinate
- */
+/*
+** This class handles the map with a 2D array, with a treausre in a coordinate
+*/
 
 public class IslandMap {
     int[][] map;
@@ -27,6 +27,14 @@ public class IslandMap {
 
         treasureCoordinates[0] = rand.nextInt(sizeX);
         treasureCoordinates[1] = rand.nextInt(sizeY);
+    }
+
+    public boolean isTreasureHere(int y, int x) {
+
+        if (treasureCoordinates[0] == y && treasureCoordinates[1] == x)
+            return true;
+        else
+            return false;
     }
 
     public int getSizeMapY() {

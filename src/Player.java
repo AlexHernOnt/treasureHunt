@@ -1,3 +1,7 @@
+/*
+**  Player class with Coordinate movement.
+*/
+
 public class Player {
     int posX;
     int posY;

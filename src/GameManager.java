@@ -4,7 +4,6 @@ import java.util.Scanner;
 **  This class takes the player's input and manages it.
 */
 
-
 public class GameManager {
     private IslandMap map;
     private Scanner scanner;
@@ -65,7 +64,21 @@ public class GameManager {
     }
 
     private void dig() {
+        String strRead;
 
+        cleanScreen();
+        if (map.isTreasureHere(player.getPosY(), player.getPosX())) {
+            System.out.println("You found the treasure, you are rich! Goodbye!");
+        } else {
+            System.out.println("Nothing here, keep going! \n- Ok");
+            strRead = scanner.nextLine();
+            if (strRead.equalsIgnoreCase("ok")) {
+                move();
+            } else {
+                System.out.println("Invalid input: \n'Start'\n'Exit'.");
+                dig();
+            }
+        }
     }
 
     private void cleanScreen() {
